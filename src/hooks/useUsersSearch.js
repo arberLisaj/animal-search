@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-function useUsersSearch() {
+const useUsersSearch = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,11 +13,9 @@ function useUsersSearch() {
     );
     const data = await response.json();
     setUsers(data);
-
     localStorage.setItem("lastQuery", q);
   };
-
   return { search, users };
-}
+};
 
 export default useUsersSearch;

@@ -13,15 +13,15 @@ const users = [...Array(250).keys()].map((id) => {
   return {
     id,
     name: chance.name(),
-    age: chance.age(),
+    city: chance.city(),
   };
 });
 
 app.get("", (req, res) => {
   const q = req.query.q?.toLowerCase() || "";
-  const result = users.filter((user) =>
-    user.name.toLowerCase().includes(q)
-  );
+  const result = users.filter((user) => user.name.toLowerCase().includes(q));
   res.send(result);
 });
-app.listen(8080, () => console.log("Listening on port http://localhost:8080"));
+
+const port = 8080;
+app.listen(port, () => console.log("Listening on port http://localhost:8080"));
